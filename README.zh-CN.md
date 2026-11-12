@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://github.com/sarpstar/cinecode/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/sarpstar/cinecode/tests.yml?branch=main&label=tests&style=flat-square" alt="tests"></a>
   <img src="https://img.shields.io/badge/license-MIT-C37232?style=flat-square" alt="license: MIT">
-  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor">
+  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Antigravity-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor, Codex, Antigravity">
   <img src="https://img.shields.io/badge/render-three.js%20%C2%B7%20ffmpeg-1a1a1a?style=flat-square" alt="render: three.js, ffmpeg">
   <a href="https://x.com/sarpstar"><img src="https://img.shields.io/badge/X-%40sarpstar-1a1a1a?style=flat-square&logo=x&logoColor=white" alt="X: @sarpstar"></a>
 </p>
@@ -29,7 +29,7 @@
 </p>
 <p align="center"><sub>cinecode 制作的影片 30 秒集锦。每一帧都在无头 Chrome 中由代码渲染而成。</sub></p>
 
-它运行在你自己电脑上的 **Claude Code**（桌面应用、VS Code 扩展、终端）或 **Cursor** 中。不需要任何付费服务；只有在你需要旁白时，才会用到你自己的 Gemini 密钥（有免费额度）、ElevenLabs，或免费的土耳其语语音。
+它运行在你自己的电脑上：最推荐 **Claude Code**（桌面应用、VS Code 扩展、终端），也可以用 **Cursor**；也有用户在 Codex、Antigravity 等其他智能体中运行过。不需要任何付费服务；只有在你需要旁白时，才会用到你自己的 Gemini 密钥（有免费额度）、ElevenLabs，或免费的土耳其语语音。
 
 ## 能做什么
 
@@ -150,7 +150,7 @@
 
 ## 环境要求
 
-- 一个能运行本地工具的 AI 编程智能体：**Claude Code**（桌面应用、VS Code 扩展或终端）或 **Cursor**。claude.ai 上的普通聊天无法在你的电脑上运行工具；Claude Code 可以（ffmpeg、Chrome、各种脚本）。
+- 一个能运行本地工具的 AI 编程智能体：**Claude Code**（桌面应用、VS Code 扩展或终端）；**Cursor** 或其他能运行工具的智能体（Codex、Antigravity……）也可以。claude.ai 上的普通聊天无法在你的电脑上运行工具；Claude Code 可以（ffmpeg、Chrome、各种脚本）。
 - Node.js 22+、Python 3.9+、ffmpeg 和 Google Chrome（或 Chromium / Edge）；缺什么，智能体会在你同意后安装。别的都不需要，Windows 上也一样：工具包运行在 Claude Code 自带的 PowerShell 中，不需要 bash；Git 只用于安装和更新工具包，从不用于渲染。如果工具包的守护程序没有在 Claude Code 会话中运行，影片的设置会显示 GUARD OFF（测试在每次推送时于 Windows 和 Linux 上运行，每次改动前也会在 macOS 上运行；完整地在 Windows 上做一部影片尚未试过）。这些钩子需要较新版本的 Claude Code（exec 形式的钩子和 `onFailure`，2.1.295 或更高版本）；在旧版客户端上，守护程序可能无法注册，但影片照样可以制作。
 - 一块 Chrome 能调用的 GPU（任何较新的 Mac，或显卡驱动正常的 PC）。
 - 磁盘空间：快速模式会把帧直接写入 MP4，几百 MB 就够；电影模式渲染时每部影片需要几 GB。
@@ -203,6 +203,14 @@ git clone https://github.com/sarpstar/cinecode.git ~/.cursor/skills/cinecode
 ```
 
 在 Cursor 中打开一个空文件夹，打开 Agent 对话，输入同一句话。工具包自带的检查（`make.py`、`qc.py`）运行方式相同；而那些在出错当下就拦住若干错误的守护钩子（剧本还没展示就先发问、草稿没有展示、刚获确认就停下）只在 Claude Code 中运行。
+
+### 5. 其他智能体（Codex、Antigravity……）
+
+如果你使用的是其他能运行工具、能读取技能的智能体，对它说：
+
+> 请从 https://github.com/sarpstar/cinecode 把 cinecode 技能安装到你的技能文件夹
+
+智能体知道自己的文件夹在哪里。工具包的工具和检查在那里同样运行；守护钩子只在 Claude Code 中运行。已有用户在这些智能体中运行过；推荐的环境是 Claude Code。
 
 ## 快速开始
 

@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://github.com/sarpstar/cinecode/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/sarpstar/cinecode/tests.yml?branch=main&label=tests&style=flat-square" alt="tests"></a>
   <img src="https://img.shields.io/badge/license-MIT-C37232?style=flat-square" alt="license: MIT">
-  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor">
+  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Antigravity-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor, Codex, Antigravity">
   <img src="https://img.shields.io/badge/render-three.js%20%C2%B7%20ffmpeg-1a1a1a?style=flat-square" alt="render: three.js, ffmpeg">
   <a href="https://x.com/sarpstar"><img src="https://img.shields.io/badge/X-%40sarpstar-1a1a1a?style=flat-square&logo=x&logoColor=white" alt="X: @sarpstar"></a>
 </p>
@@ -29,7 +29,7 @@
 </p>
 <p align="center"><sub>cinecode で作った映画からの 30 秒。すべてのフレームはヘッドレス Chrome 上でコードからレンダリングされています。</sub></p>
 
-**Claude Code**（デスクトップアプリ、VS Code 拡張機能、ターミナル）または **Cursor** の中で、あなた自身のコンピューター上で動きます。有料サービスは必要ありません。ナレーションを付けたい場合に限り、あなた自身の Gemini キー（無料枠あり）、ElevenLabs、または無料のトルコ語音声を使います。
+あなた自身のコンピューター上で動きます。おすすめは **Claude Code**（デスクトップアプリ、VS Code 拡張機能、ターミナル）で、**Cursor** でも動きます。Codex や Antigravity など、ほかのエージェントで動かしたユーザーもいます。有料サービスは必要ありません。ナレーションを付けたい場合に限り、あなた自身の Gemini キー（無料枠あり）、ElevenLabs、または無料のトルコ語音声を使います。
 
 ## 作れるもの
 
@@ -150,7 +150,7 @@
 
 ## 動作要件
 
-- ローカルのツールを実行できる AI コーディングエージェント：**Claude Code**（デスクトップアプリ、VS Code 拡張機能、またはターミナル）または **Cursor**。claude.ai の通常のチャットではあなたのコンピューター上でツールを実行できませんが、Claude Code ならできます（ffmpeg、Chrome、各スクリプト）。
+- ローカルのツールを実行できる AI コーディングエージェント：**Claude Code**（デスクトップアプリ、VS Code 拡張機能、またはターミナル）がおすすめです。**Cursor** や、ツールを実行できるほかのエージェント（Codex、Antigravity など）でも動きます。claude.ai の通常のチャットではあなたのコンピューター上でツールを実行できませんが、Claude Code ならできます（ffmpeg、Chrome、各スクリプト）。
 - Node.js 22+、Python 3.9+、ffmpeg、Google Chrome（または Chromium / Edge）。足りないものは、あなたの OK を得てからエージェントがインストールします。それ以外は不要で、Windows でも同じです。キットは Claude Code 自身の PowerShell で動き、bash は使いません。Git はキットのインストールと更新にだけ使い、レンダリングには使いません。Claude Code のセッションでキットのガードが動かない場合、映画のセットアップに GUARD OFF と表示されます（テストはプッシュのたびに Windows と Linux で、変更のたびに事前に macOS で実行しています。Windows で映画を丸ごと 1 本作る検証はまだ行っていません）。フックには新しめの Claude Code（exec 形式のフックと `onFailure`、2.1.295 以降）が必要です。古いクライアントではガードが登録されないことがありますが、映画の制作自体は進みます。
 - Chrome が使える GPU（最近の Mac なら何でも、または正常に動作するグラフィックドライバーを備えた PC）。
 - ディスク容量：クイックモードはフレームを直接 MP4 に流し込むので、数百 MB あれば十分です。フィルムモードはレンダリング中に映画 1 本あたり数 GB が必要です。
@@ -203,6 +203,14 @@ git clone https://github.com/sarpstar/cinecode.git ~/.cursor/skills/cinecode
 ```
 
 Cursor で空のフォルダーを開き、Agent チャットを開いて同じ文を入力します。キット独自のチェック（`make.py`、`qc.py`）は同じように動きます。一方、いくつかのミス（見せる前に脚本について尋ねる、ドラフトを見せない、承認の直後に止まる）をその場で止めるガードフックは、Claude Code でのみ動作します。
+
+### 5. ほかのエージェント（Codex、Antigravity など）
+
+ツールを実行でき、スキルを読み込めるほかのエージェントを使っている場合は、こう伝えてください：
+
+> https://github.com/sarpstar/cinecode から cinecode スキルをあなたのスキルフォルダーにインストールして
+
+エージェントは自分のフォルダーを知っています。キットのツールとチェックはそこでも動きます。ガードフックは Claude Code でのみ動きます。これらのエージェントで動かしたユーザーがいます。おすすめの環境は Claude Code です。
 
 ## クイックスタート
 

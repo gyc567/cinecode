@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://github.com/sarpstar/cinecode/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/sarpstar/cinecode/tests.yml?branch=main&label=tests&style=flat-square" alt="tests"></a>
   <img src="https://img.shields.io/badge/license-MIT-C37232?style=flat-square" alt="license: MIT">
-  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor">
+  <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Antigravity-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor, Codex, Antigravity">
   <img src="https://img.shields.io/badge/render-three.js%20%C2%B7%20ffmpeg-1a1a1a?style=flat-square" alt="render: three.js, ffmpeg">
   <a href="https://x.com/sarpstar"><img src="https://img.shields.io/badge/X-%40sarpstar-1a1a1a?style=flat-square&logo=x&logoColor=white" alt="X: @sarpstar"></a>
 </p>
@@ -29,7 +29,7 @@
 </p>
 <p align="center"><sub>cinecode ile yapılmış filmlerden 30 saniye. Her kare başsız Chrome'da koddan üretildi.</sub></p>
 
-Kendi bilgisayarında, **Claude Code** (masaüstü uygulaması, VS Code eklentisi, terminal) ya da **Cursor** içinde çalışır. Ücretli bir servis gerekmez; dış ses, yalnızca istersen, kendi Gemini anahtarını (ücretsiz kotası var), ElevenLabs'i ya da ücretsiz bir Türkçe sesi kullanır.
+Kendi bilgisayarında çalışır: en iyi **Claude Code**'da (masaüstü uygulaması, VS Code eklentisi, terminal), ayrıca **Cursor**'da; kullanıcılar Codex ve Antigravity gibi başka ajanlarda da çalıştırdı. Ücretli bir servis gerekmez; dış ses, yalnızca istersen, kendi Gemini anahtarını (ücretsiz kotası var), ElevenLabs'i ya da ücretsiz bir Türkçe sesi kullanır.
 
 ## Neler yapabilirsin
 
@@ -150,7 +150,7 @@ Ayrıntılar: `references/purpose-cinematic.md`, `references/purpose-ad.md`, `re
 
 ## Gereksinimler
 
-- Bilgisayarında araç çalıştırabilen bir yapay zekâ kodlama ajanı: **Claude Code** (masaüstü uygulaması, VS Code eklentisi ya da terminal) ya da **Cursor**. claude.ai'deki normal sohbet bilgisayarında araç çalıştıramaz; Claude Code çalıştırır (ffmpeg, Chrome, betikler).
+- Bilgisayarında araç çalıştırabilen bir yapay zekâ kodlama ajanı: **Claude Code** (masaüstü uygulaması, VS Code eklentisi ya da terminal); **Cursor** ya da araç çalıştırabilen başka bir ajan (Codex, Antigravity…) da olur. claude.ai'deki normal sohbet bilgisayarında araç çalıştıramaz; Claude Code çalıştırır (ffmpeg, Chrome, betikler).
 - Node.js 22+, Python 3.9+, ffmpeg ve Google Chrome (ya da Chromium / Edge); eksik olanı ajan senin onayınla kurar. Başka bir şey gerekmez, Windows'ta da: kit Claude Code'un kendi PowerShell'inde çalışır, bash istemez; Git yalnızca kiti kurmak ve güncellemek için kullanılır, film üretiminde değil. Kitin bekçisi bir Claude Code oturumunda çalışmıyorsa filmin kurulumu GUARD OFF der (testler her gönderimde Windows ve Linux'ta, her değişiklikten önce macOS'ta çalışır; Windows'ta baştan sona bir film henüz denenmedi). Kancalar güncel bir Claude Code ister (exec biçimli kancalar ve `onFailure`, 2.1.295 ve sonrası); daha eski bir sürümde bekçi devreye girmeyebilir, film yine çalışır.
 - Chrome'un kullanabildiği bir GPU (güncel her Mac ya da sürücüsü çalışan bir PC).
 - Disk alanı: Hızlı mod kareleri doğrudan MP4'e aktardığı için birkaç yüz MB yeterli; Film modu render sırasında film başına birkaç GB ister.
@@ -203,6 +203,14 @@ git clone https://github.com/sarpstar/cinecode.git ~/.cursor/skills/cinecode
 ```
 
 Cursor'da boş bir klasör aç, Agent sohbetini aç ve aynı cümleyi yaz. Kitin kendi kontrolleri (`make.py`, `qc.py`) aynı çalışır; bazı hataları anında durduran bekçi kancaları (gösterilmeden sorulan senaryo, gösterilmeyen taslak, onaydan hemen sonra durma) yalnızca Claude Code'da çalışır.
+
+### 5. Diğer ajanlar (Codex, Antigravity…)
+
+Araç çalıştırabilen ve skill okuyabilen başka bir ajan kullanıyorsan ona şunu yaz:
+
+> cinecode skill'ini https://github.com/sarpstar/cinecode adresinden kendi skill klasörüne kur
+
+Ajan kendi klasörünü bilir. Kitin araçları ve kontrolleri orada da çalışır; bekçi kancaları yalnızca Claude Code'da çalışır. Bu ajanları kullanıcılar çalıştırdı; önerilen ortam Claude Code.
 
 ## Hızlı başlangıç
 
