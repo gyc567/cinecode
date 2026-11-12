@@ -21,6 +21,7 @@
   <img src="https://img.shields.io/badge/license-MIT-C37232?style=flat-square" alt="license: MIT">
   <img src="https://img.shields.io/badge/agents-Claude%20Code%20%C2%B7%20Cursor-1a1a1a?style=flat-square" alt="agents: Claude Code, Cursor">
   <img src="https://img.shields.io/badge/render-three.js%20%C2%B7%20ffmpeg-1a1a1a?style=flat-square" alt="render: three.js, ffmpeg">
+  <a href="https://x.com/sarpstar"><img src="https://img.shields.io/badge/X-%40sarpstar-1a1a1a?style=flat-square&logo=x&logoColor=white" alt="X: @sarpstar"></a>
 </p>
 
 <p align="center">
